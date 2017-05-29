@@ -1,3 +1,2 @@
-rootProject.name = 'starwarp'
-
-include 'steamcmd'
+include 'steam'
+include 'starwarp-server'

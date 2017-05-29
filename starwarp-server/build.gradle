@@ -1,0 +1,13 @@
+apply plugin: 'kotlin'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}"
+
+    compile "io.dropwizard:dropwizard-core:${dropwizardVersion}"
+
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:${kotlinJacksonVersion}"
+}

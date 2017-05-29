@@ -1,0 +1,31 @@
+/**
+ * Requires buildscript classpath dependencies:
+ *      classpath "gradle.plugin.com.palantir.gradle.gitversion:gradle-git-version:${gradleGitVersion}"
+ */
+
+// https://github.com/palantir/gradle-git-version
+apply plugin: "com.palantir.git-version"
+
+ext.gitVersionSafe = {
+    // Force calculation if none is found via plugin
+    if (gitVersion() == "unspecified") {
+        def gitTag = new ByteArrayOutputStream()
+        exec {
+            commandLine "git", "tag"
+            standardOutput = gitTag
+        }
+        def gitCommitHash = new ByteArrayOutputStream()
+        exec {
+            commandLine "git", "describe", "--always"
+            standardOutput = gitCommitHash
+        }
+        return "${gitTag}-${gitCommitHash}".replaceAll("\\s","")
+    } else {
+        return gitVersion()
+    }
+
+}
+
+version gitVersionSafe()
+
+
