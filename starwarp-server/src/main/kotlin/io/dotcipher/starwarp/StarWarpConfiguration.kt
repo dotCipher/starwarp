@@ -7,9 +7,12 @@ import io.dropwizard.Configuration
 import java.nio.file.Path
 import java.nio.file.Paths
 
-class StarWarpConfiguration @JsonCreator constructor(@JsonProperty starboundDirectory : String): Configuration() {
+class StarWarpConfiguration
+@JsonCreator constructor(@JsonProperty starboundDirectory: String) : Configuration() {
 
     @get:JsonGetter
     val starboundDirectory: Path = Paths.get(starboundDirectory)
+
+
 
 }
