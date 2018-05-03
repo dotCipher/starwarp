@@ -1,9 +1,0 @@
-/**
- * Required buildscript classpath dependencies:
- *      classpath "jp.classmethod.aws:gradle-aws-plugin:${awsGradleVersion}"
- */
-apply from: "${rootDir}/gradle/distribution.gradle"
-
-dependencies {
-    runtime project(":starwarp-server")
-}
