@@ -3,7 +3,6 @@ package io.dotcipher.steam.api
 import java.net.URL
 import java.nio.file.Files
 import java.nio.file.Path
-import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
 
 /**
@@ -15,19 +14,21 @@ interface SteamCmd {
         const val SCRIPT_NAME: String = "steamcmd.sh"
         const val DOWNLOAD_URL: String = "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz"
 
-        fun download(url: String, installDirectory: Path): Boolean {
+        fun download(url: String, installDirectory: Path): Path {
             try {
-                URL(url).openStream().use {
-                    val filename = url.substringAfterLast("/")
-                    Files.copy(it, Paths.get(installDirectory.toString(), filename), StandardCopyOption.REPLACE_EXISTING)
-                    return true
+                val filename = url.substringAfterLast("/")
+                if (!installDirectory.resolve(filename).toFile().exists()) {
+                    URL(url).openStream().use {
+                        Files.copy(it, installDirectory.resolve(filename), StandardCopyOption.REPLACE_EXISTING)
+                    }
                 }
+                return installDirectory.resolve(filename)
             } catch (e: Exception) {
                 throw IllegalStateException(e.localizedMessage)
             }
         }
 
-        fun download(installDirectory: Path): Boolean {
+        fun download(installDirectory: Path): Path {
             return download(DOWNLOAD_URL, installDirectory)
         }
 

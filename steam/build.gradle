@@ -2,8 +2,12 @@ apply plugin: 'kotlin'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}"
+
+    // Remotely manage Steam via giraffe
+    compile "com.palantir.giraffe:giraffe-ssh:${giraffeVersion}"
 }

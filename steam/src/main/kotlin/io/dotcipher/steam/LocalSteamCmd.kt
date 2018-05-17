@@ -12,7 +12,9 @@ class LocalSteamCmd(installDirectory: Path): SteamCmd {
     constructor(installDirectory: String) : this(Paths.get(installDirectory))
 
     init {
+        // Download on initialization
 
+        SteamCmd.download(installDirectory)
     }
 
     override fun appUpdate(appID: Int) {
