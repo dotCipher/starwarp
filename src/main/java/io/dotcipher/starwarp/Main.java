@@ -1,6 +1,6 @@
 package io.dotcipher.starwarp;
 
-import pokemon.Pokemon;
+import io.dotcipher.starwarp.pokemon.Pokemon;
 
 public class Main {
 
@@ -9,5 +9,7 @@ public class Main {
         Pokemon pokemon = new Pokemon("Greninja", 5);
         System.out.println("Go " + pokemon.getName() + "!");
         System.out.println("Use Water Shuriken!");
+
+        System.out.println("Honor the faith that others have placed upon you");
     }
 }

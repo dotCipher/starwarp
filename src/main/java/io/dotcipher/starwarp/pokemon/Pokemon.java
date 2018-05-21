@@ -1,4 +1,4 @@
-package pokemon;
+package io.dotcipher.starwarp.pokemon;
 
 public class Pokemon {
     protected String name;
