@@ -7,3 +7,12 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.palantir.giraffe:giraffe-ssh:0.9.0'
+    // 'com.palantir.giraffe:giraffe:giraffe-core:0.9.0' for local features only
+}
