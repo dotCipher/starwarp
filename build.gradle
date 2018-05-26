@@ -4,15 +4,15 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds/
  */
-apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
-repositories {
-    jcenter()
+allprojects {
+    repositores {
+        jcenter()
+    }
 }
 
-dependencies {
-    compile 'com.palantir.giraffe:giraffe-ssh:0.9.0'
-    // 'com.palantir.giraffe:giraffe:giraffe-core:0.9.0' for local features only
+subprojects {
+    version = '1.0'
 }
